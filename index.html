@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yaguel | Portfolio</title>
+  <style>
+    /* GLOBAL STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #020617, #0f172a, #1e1b4b);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      width: 100%;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    nav h2 { color: #38bdf8; }
+    nav ul { display: flex; list-style: none; }
+    nav ul li { margin-left: 20px; }
+    nav ul li a { text-decoration: none; color: #fff; transition: 0.3s; font-size: 0.9rem; }
+    nav ul li a:hover { color: #38bdf8; }
+
+    /* SECTIONS COMMON */
+    section { padding: 100px 10%; text-align: center; }
+    h2 { font-size: 36px; margin-bottom: 40px; }
+    h2 span { color: #38bdf8; }
+
+    /* HERO SECTION */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .hero-img { position: relative; margin-bottom: 30px; }
+    .hero-img img {
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+      border: 6px solid #38bdf8;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .glow {
+      position: absolute; top: 50%; left: 50%;
+      width: 280px; height: 280px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, #38bdf866, transparent 70%);
+      filter: blur(30px);
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .hero-text h1 { font-size: 45px; margin-bottom: 10px; }
+    .hero-text span { color: #38bdf8; }
+    .hero-text p { color: #94a3b8; max-width: 600px; margin: 15px auto; line-height: 1.6; }
+
+    /* ABOUT SECTION */
+    .about-container { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: start; text-align: left; }
+    .about-left p { color: #94a3b8; margin-bottom: 20px; line-height: 1.7; }
+    .about-cards { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 30px; }
+    .about-card { background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 12px; border-left: 4px solid #38bdf8; }
+    .about-card h4 { margin-bottom: 5px; color: #38bdf8; }
+
+    .about-right { background: rgba(15, 23, 42, 0.6); padding: 30px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+    .profile-card p { margin: 12px 0; font-size: 0.9rem; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
+
+    /* EDUCATION SECTION */
+    .edu-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .edu-card { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); text-align: left; }
+    .edu-card h4 { color: #38bdf8; font-size: 0.8rem; letter-spacing: 2px; }
+    .badge { display: inline-block; margin-top: 10px; padding: 5px 12px; background: #38bdf8; color: #020617; border-radius: 20px; font-weight: bold; font-size: 0.75rem; }
+
+    /* SKILLS SECTION */
+    .skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+    .bar { margin-bottom: 25px; text-align: left; }
+    .bar p { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
+    .progress { background: rgba(255,255,255,0.1); border-radius: 10px; height: 10px; overflow: hidden; }
+    .progress div { background: #38bdf8; height: 100%; border-radius: 10px; }
+
+    .soft-skills { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .skill-box { background: rgba(56, 189, 248, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.2); font-size: 0.85rem; }
+
+    /* PROJECTS */
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+    .card { background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s; }
+    .card:hover { transform: translateY(-10px); border-color: #38bdf8; }
+    .project-img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
+
+    .btn { padding: 12px 25px; background: #38bdf8; border: none; color: #0f172a; font-weight: bold; cursor: pointer; border-radius: 5px; transition: 0.3s; text-decoration: none; display: inline-block; }
+    .btn:hover { background: #7dd3fc; transform: scale(1.05); }
+
+    .tag-btn { padding: 4px 8px; font-size: 11px; background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid #38bdf8; border-radius: 4px; margin: 2px; }
+
+    /* CONTACT */
+    input, textarea { width: 100%; margin: 10px 0; padding: 12px; background: #1e293b; border: 1px solid #334155; border-radius: 5px; color: white; }
+
+    footer { padding: 40px; color: #64748b; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+
+    @media (max-width: 900px) {
+      .about-container, .skills-container { grid-template-columns: 1fr; }
+      .hero-text h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h2>Yaguel</h2>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-img">
+      <div class="glow"></div>
+      <img src="your image.png" alt="Yaguel Profile">
+    </div>
+    <div class="hero-text">
+      <h1>Hi, I'm <span>Yaguel, John Louie</span></h1>
+      <p>A 24-year-old IT student at Global Reciprocal College. I enjoy logic, creativity, and continuous growth.</p>
+      <a href="#projects" class="btn">View Projects</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-container">
+      <div class="about-left">
+        <h2>Who is <span>Yaguel?</span></h2>
+        <p>I am <b>John Louie Yaguel</b>, from Port Area Manila. I am an IT student passionate about <b>digital innovation</b> and structural problem-solving.</p>
+        
+        <div class="about-cards">
+          <div class="about-card">
+            <h4>💡 UI/UX Design</h4>
+            <p>Blending technical skills with imaginative design to create intuitive user experiences.</p>
+          </div>
+          <div class="about-card">
+            <h4>💻 Development</h4>
+            <p>Building functional software and websites using HTML, CSS, and modern logic.</p>
+          </div>
+          <div class="about-card">
+            <h4>🧠 Systems Analysis</h4>
+            <p>Evaluating complex digital systems to solve technical challenges efficiently.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <div class="profile-card">
+          <h3 style="color:#38bdf8; margin-bottom:15px;">Profile Details</h3>
+          <p><b>Name:</b> John Louie Yaguel</p>
+          <p><b>Age:</b> 24</p>
+          <p><b>Location:</b> Port Area, Manila</p>
+          <p><b>Course:</b> BSIT</p>
+          <p><b>Status:</b> Student</p>
+          <p><b>Email:</b> yagueljols@email.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Academic <span>Journey</span></h2>
+    <div class="edu-container">
+      <div class="edu-card">
+        <h4>COLLEGE</h4>
+        <h3>BS in Information Technology</h3>
+        <p>Global Reciprocal College</p>
+        <p>Caloocan City</p>
+        <span class="badge">2025 - 2026</span>
+      </div>
+      <div class="edu-card">
+        <h4>SENIOR HIGH SCHOOL</h4>
+        <h3>Florentino Senior High School</h3>
+        <p>(EIM) Electrical Installation Maintenance</p>
+        <p>Gagalangin St. Tondo Manila</p>
+        <span class="badge">2023 - 2025</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technical <span>Abilities</span></h2>
+    <div class="skills-container">
+      <div class="skill-bars">
+        <div class="bar">
+          <p>Frontend Development (HTML/CSS) <span>85%</span></p>
+          <div class="progress"><div style="width:85%"></div></div>
+        </div>
+        <div class="bar">
+          <p>UI Design (Canva/Figma) <span>88%</span></p>
+          <div class="progress"><div style="width:88%"></div></div>
+        </div>
+        <div class="bar">
+          <p>Version Control (GitHub) <span>75%</span></p>
+          <div class="progress"><div style="width:75%"></div></div>
+        </div>
+        <div class="bar">
+          <p>Database Management <span>65%</span></p>
+          <div class="progress"><div style="width:65%"></div></div>
+        </div>
+      </div>
+
+      <div class="soft-skills">
+        <div class="skill-box">♟️ Strategic Planning</div>
+        <div class="skill-box">🎯 Agile Learning</div>
+        <div class="skill-box">🤝 Collaborative Dev</div>
+        <div class="skill-box">🚀 Growth Mindset</div>
+        <div class="skill-box">🌐 Digital Communication</div>
+        <div class="skill-box">🛡️ Tech Security Awareness</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>My Works</h2>
+    <div class="project-grid">
+      <div class="project card">
+        <img src="Image.png" alt="Bootstrap" class="project-img">
+        <h3>Bootstrap Framework</h3>
+        <p>Responsive design implementation using Bootstrap components.</p>
+        <div class="tags">
+          <span class="tag-btn">HTML</span><span class="tag-btn">CSS</span><span class="tag-btn">GitHub</span>
+        </div>
+      </div>
+      <div class="project card">
+        <img src="images.png" alt="Calendar" class="project-img">
+        <h3>Digital Calendar</h3>
+        <p>Interactive calendar interface with dynamic scheduling logic.</p>
+        <div class="tags">
+          <span class="tag-btn">HTML</span><span class="tag-btn">CSS</span><span class="tag-btn">GitHub</span>
+        </div>
+      </div>
+      <div class="project card">
+        <img src="iimages.jfif" alt="Jo Bean Cafe" class="project-img">
+        <h3>Jo Bean Branding</h3>
+        <p>Full brand identity and web presentation for a retail concept.</p>
+        <div class="tags">
+          <span class="tag-btn">Design</span><span class="tag-btn">Branding</span><span class="tag-btn">Presentation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div style="max-width: 500px; margin: auto;" class="card">
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea rows="4" placeholder="Message"></textarea>
+      <button class="btn" style="width: 100%;">Send Message</button>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Yaguel | Portfolio
+  </footer>
+
+</body>
+</html>
